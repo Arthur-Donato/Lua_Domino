@@ -49,7 +49,7 @@ end
 function Embaralhar(monte)
     local j
     for i = #monte, 2, -1 do
-        j = math.random(i)
+        j = love.math.random(i)
         monte[i], monte[j] = monte[j], monte[i]--OBS
     end
     return monte
