@@ -5,8 +5,8 @@ local WIDTH, HEIGHT = love.window.getDesktopDimensions()
 
 local Game = {
     botaoComprar = {
-            x = 1100,
-            y = 480,
+            x = 1010,
+            y = 878,
             width = 200,
             height = 80,
             text = "Comprar",
@@ -115,7 +115,7 @@ function Game:draw()
     
 
     for _,piece in ipairs(self.maoJogador) do--NOTE:
-        love.graphics.draw(piece.img,posicaoAtual,580)
+        love.graphics.draw(piece.img,posicaoAtual,850)
         posicaoAtual = posicaoAtual + piece.width + 20
     end
 
@@ -126,6 +126,95 @@ function Game:draw()
 -- o "_" representa o index i que usamos normalmente. Porém, é algo comun usar o _ para representar um index que não pretedemos usar
 -- isso é necessário pois, a linguagem lua retorna dois valores ao colocar apenas "for piece in lista"
 -- irá retornar o valor do indice e o valor da lista, assim sendo necessário """"""tratar""""" ambos
+
+
+--COMEÇAR OS TESTES PARA O DESENHO FINAL DO TABULEIRO, ONDE TODAS AS PEÇAS SERÃO COLOCADAS
+
+love.graphics.setColor(0,1,0,1)
+
+love.graphics.rectangle("fill", 655, 475, 135, 75)
+
+love.graphics.setColor(1,0,0,1)
+love.graphics.rectangle("fill", 790, 475, 135, 75)
+
+love.graphics.setColor(0,0,0,1)
+love.graphics.rectangle("fill", 925, 475, 135, 75)
+
+love.graphics.setColor(1,0,0,1)
+love.graphics.rectangle("fill", 1060, 475, 135, 75)
+
+love.graphics.setColor(0,0,0,1)
+love.graphics.rectangle("fill", 1195, 475, 135, 75)
+
+love.graphics.setColor(0,0,0,1)
+love.graphics.rectangle("fill", 520, 475, 135, 75)
+
+love.graphics.setColor(1,0,0,1)
+love.graphics.rectangle("fill", 385, 475, 135, 75)
+
+love.graphics.setColor(0,0,0,1)
+love.graphics.rectangle("fill", 250, 475, 135, 75)
+
+love.graphics.setColor(1,0,0,1)
+love.graphics.rectangle("fill", 115, 475, 135, 75)
+
+love.graphics.setColor(1,0,0,1)
+love.graphics.rectangle("fill", 1330, 415, 75, 135)
+
+love.graphics.setColor(0,0,0,1)
+love.graphics.rectangle("fill", 1330, 280, 75, 135)
+
+love.graphics.setColor(1,0,0,1)
+love.graphics.rectangle("fill", 1195, 280, 135, 75)
+
+love.graphics.setColor(0,0,0,1)
+love.graphics.rectangle("fill", 1060, 280, 135, 75)
+
+love.graphics.setColor(1,0,0,1)
+love.graphics.rectangle("fill", 925, 280, 135, 75)
+
+love.graphics.setColor(0,0,0,1)
+love.graphics.rectangle("fill", 790, 280, 135, 75)
+
+love.graphics.setColor(1,0,0,1)
+love.graphics.rectangle("fill", 655, 280, 135, 75)
+
+love.graphics.setColor(0,0,0,1)
+love.graphics.rectangle("fill", 520, 280, 135, 75)
+
+love.graphics.setColor(1,0,0,1)
+love.graphics.rectangle("fill", 385, 280, 135, 75)
+
+love.graphics.setColor(0,0,0,1)
+love.graphics.rectangle("fill", 250, 280, 135, 75)
+
+love.graphics.setColor(1,0,0,1)
+love.graphics.rectangle("fill", 115, 280, 135, 75)
+
+
+--PEÇAS RESTANTES NA PARTE INFERIOR DO TABULEIRO
+
+
+love.graphics.setColor(0,0,0,1)
+love.graphics.rectangle("fill", 40, 475, 75, 135)
+
+love.graphics.setColor(1,0,0,1)
+love.graphics.rectangle("fill", 40, 610, 75, 135)
+
+love.graphics.setColor(0,0,0,1)
+love.graphics.rectangle("fill", 115, 670, 135, 75)
+
+love.graphics.setColor(1,0,0,1)
+love.graphics.rectangle("fill", 250, 670, 135, 75)
+
+love.graphics.setColor(0,0,0,1)
+love.graphics.rectangle("fill", 385, 670, 135, 75)
+
+love.graphics.setColor(1,0,0,1)
+love.graphics.rectangle("fill", 520, 670, 135, 75)
+
+love.graphics.setColor(0,0,0,1)
+love.graphics.rectangle("fill", 655, 670, 135, 75)
     
     
 end

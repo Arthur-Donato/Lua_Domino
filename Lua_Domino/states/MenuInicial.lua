@@ -8,8 +8,8 @@ function menuInicial:enter()
 
     self.botoes = {
         botaoIniciarJogo = {
-        x = 535,
-        y = 310,
+        x = WIDTH*0.4,
+        y = HEIGHT*0.29,
         width = 370,
         height = 90,
         text = "Iniciar Jogo",
@@ -17,8 +17,8 @@ function menuInicial:enter()
         },
 
         botaoHistorico = {
-            x = 535,
-            y = 425,
+            x = WIDTH*0.4,
+            y = HEIGHT*0.42,
             width = 370,
             height = 90,
             text = "Histórico",
@@ -26,8 +26,8 @@ function menuInicial:enter()
         },
 
         botaoSairJogo = {
-            x = 535,
-            y = 539,
+            x = WIDTH*0.4,
+            y = HEIGHT*0.55,
             width = 370,
             height = 90,
             text = "Sair do Jogo",
@@ -46,21 +46,21 @@ function menuInicial:draw()
 
     love.graphics.setColor(0,0,0,1)
 
-    love.graphics.line(720,0,720,1024)
+    love.graphics.line(WIDTH/2,0,WIDTH/2,HEIGHT)
 
     
     --CRIANDO AS CIRCUNFERENCIAS PRESENTES NA TELA
-    love.graphics.circle("fill", 131, 227, 50)
-    love.graphics.circle("fill", 495, 227, 50)
+    love.graphics.circle("fill", WIDTH*0.1, HEIGHT*0.2, 50)
+    love.graphics.circle("fill", WIDTH*0.38, HEIGHT*0.2, 50)
 
-    love.graphics.circle("fill", 131, 712, 50)
-    love.graphics.circle("fill", 495, 712, 50)
+    love.graphics.circle("fill", WIDTH*0.1, HEIGHT*0.68, 50)
+    love.graphics.circle("fill", WIDTH*0.38, HEIGHT*0.68, 50)
 
-    love.graphics.circle("fill", 945, 227, 50)
-    love.graphics.circle("fill", 1309, 227, 50)
+    love.graphics.circle("fill", WIDTH*0.61, HEIGHT*0.2, 50)
+    love.graphics.circle("fill", WIDTH*0.88, HEIGHT*0.2, 50)
 
-    love.graphics.circle("fill", 945, 712, 50)
-    love.graphics.circle("fill", 1309, 712, 50)
+    love.graphics.circle("fill", WIDTH*0.61, HEIGHT*0.68, 50)
+    love.graphics.circle("fill", WIDTH*0.88, HEIGHT*0.68, 50)
 
     --CRIANDO O BOTAO DE INICIO DE JOGO
 
@@ -83,7 +83,7 @@ function menuInicial:draw()
 
     local posicaoTexto = self.botoes.botaoIniciarJogo.y + (self.botoes.botaoIniciarJogo.height / 2) - (self.fonteBotoes:getHeight() / 2)
 
-    love.graphics.printf(self.botoes.botaoIniciarJogo.text, self.botoes.botaoIniciarJogo.x, posicaoTexto, self.botoes.botaoIniciarJogo.width, "center")
+    love.graphics.printf(self.botoes.botaoIniciarJogo.text, self.botoes.botaoIniciarJogo.x , posicaoTexto, self.botoes.botaoIniciarJogo.width, "center")
 
     --CRIANDO O BOTAO DE HISTORICO DE PARTIDAS
 
@@ -104,7 +104,7 @@ function menuInicial:draw()
 
     posicaoTexto = self.botoes.botaoHistorico.y + (self.botoes.botaoHistorico.height / 2) - (self.fonteBotoes:getHeight() / 2)
 
-    love.graphics.printf(self.botoes.botaoHistorico.text, self.botoes.botaoHistorico.x, posicaoTexto, self.botoes.botaoHistorico.width, "center")
+    love.graphics.printf(self.botoes.botaoHistorico.text, self.botoes.botaoHistorico.x,  posicaoTexto, self.botoes.botaoHistorico.width, "center")
 
     --CRIANDO O BOTAO PARA SAIR DO JOGO
 
