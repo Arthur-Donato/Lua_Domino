@@ -1,6 +1,12 @@
 local WIDTH, HEIGHT = love.window.getDesktopDimensions()
 local GameState = require 'lib.GameState'
 
+local baseWidth = 1920
+local baseHeight = 1080
+
+local scaleX = WIDTH / baseWidth
+local scaleY = HEIGHT / baseHeight
+
 local menuInicial = {}
 
 function menuInicial:enter()
@@ -8,28 +14,28 @@ function menuInicial:enter()
 
     self.botoes = {
         botaoIniciarJogo = {
-        x = WIDTH*0.4,
+        x = (WIDTH / 2) - 185,
         y = HEIGHT*0.29,
-        width = 370,
-        height = 90,
+        width = 370 / scaleX,
+        height = 90 / scaleY,
         text = "Iniciar Jogo",
         isHovering = false
         },
 
         botaoHistorico = {
-            x = WIDTH*0.4,
+            x = (WIDTH / 2) - 185,
             y = HEIGHT*0.42,
-            width = 370,
-            height = 90,
+            width = 370 / scaleX,
+            height = 90 / scaleY,
             text = "Histórico",
             isHovering = false
         },
 
         botaoSairJogo = {
-            x = WIDTH*0.4,
+            x = (WIDTH / 2) - 185,
             y = HEIGHT*0.55,
-            width = 370,
-            height = 90,
+            width = 370 / scaleX,
+            height = 90 / scaleY,
             text = "Sair do Jogo",
             isHovering = false
         }
@@ -50,7 +56,7 @@ function menuInicial:draw()
 
     
     --CRIANDO AS CIRCUNFERENCIAS PRESENTES NA TELA
-    love.graphics.circle("fill", WIDTH*0.1, HEIGHT*0.2, 50)
+    love.graphics.circle("fill", WIDTH*0.1, HEIGHT*0.2, 50 / scaleX)
     love.graphics.circle("fill", WIDTH*0.38, HEIGHT*0.2, 50)
 
     love.graphics.circle("fill", WIDTH*0.1, HEIGHT*0.68, 50)
