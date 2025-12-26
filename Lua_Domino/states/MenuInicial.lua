@@ -57,16 +57,16 @@ function menuInicial:draw()
     
     --CRIANDO AS CIRCUNFERENCIAS PRESENTES NA TELA
     love.graphics.circle("fill", WIDTH*0.1, HEIGHT*0.2, 50 / scaleX)
-    love.graphics.circle("fill", WIDTH*0.38, HEIGHT*0.2, 50)
+    love.graphics.circle("fill", WIDTH*0.38, HEIGHT*0.2, 50 / scaleX)
 
-    love.graphics.circle("fill", WIDTH*0.1, HEIGHT*0.68, 50)
-    love.graphics.circle("fill", WIDTH*0.38, HEIGHT*0.68, 50)
+    love.graphics.circle("fill", WIDTH*0.1, HEIGHT*0.68, 50 / scaleX)
+    love.graphics.circle("fill", WIDTH*0.38, HEIGHT*0.68, 50 / scaleX)
 
-    love.graphics.circle("fill", WIDTH*0.61, HEIGHT*0.2, 50)
-    love.graphics.circle("fill", WIDTH*0.88, HEIGHT*0.2, 50)
+    love.graphics.circle("fill", WIDTH*0.61, HEIGHT*0.2, 50 / scaleX)
+    love.graphics.circle("fill", WIDTH*0.88, HEIGHT*0.2, 50 /scaleX)
 
-    love.graphics.circle("fill", WIDTH*0.61, HEIGHT*0.68, 50)
-    love.graphics.circle("fill", WIDTH*0.88, HEIGHT*0.68, 50)
+    love.graphics.circle("fill", WIDTH*0.61, HEIGHT*0.68, 50 / scaleX)
+    love.graphics.circle("fill", WIDTH*0.88, HEIGHT*0.68, 50 / scaleX)
 
     --CRIANDO O BOTAO DE INICIO DE JOGO
 
