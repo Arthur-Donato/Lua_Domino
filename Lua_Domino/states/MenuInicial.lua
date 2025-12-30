@@ -4,7 +4,7 @@ local GameState = require 'lib.GameState'
 local baseWidth = 1920
 local baseHeight = 1080
 
-local scaleX = WIDTH / baseWidth --Pegando a proporção da largura da tela
+ScaleX = WIDTH / baseWidth --Pegando a proporção da largura da tela
 local scaleY = HEIGHT / baseHeight -- Pegando a proporção da altura da tela
 
 local btnResponsiveX = 370 * scaleX -- Determinando tamanho dos botoes de forma responsiva
