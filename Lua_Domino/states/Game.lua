@@ -116,6 +116,8 @@ function Game:draw()
 
     for _,piece in ipairs(self.maoJogador) do--NOTE:
         love.graphics.draw(piece.img,posicaoAtual,850)
+        piece.x = posicaoAtual
+        piece.y = 850 --alterar para variável posteriormente
         posicaoAtual = posicaoAtual + piece.width + 20
     end
 
