@@ -78,7 +78,7 @@ function menuInicial:draw()
     love.graphics.circle("fill", WIDTH*0.88, HEIGHT*0.68, 50 * scaleX)
 
     --CRIANDO O BOTAO DE INICIO DE JOGO
-    local posicaoAtualY = (HEIGHT/2) + btnResponsiveY -- deixando o primeiro botao abaixo do centro da tela
+    local posicaoAtualY = (HEIGHT/2) - btnResponsiveY * 2 -- deixando o primeiro botao abaixo do centro da tela
     for _,piece in ipairs(self.botoes) do
         
         if piece.isHovering then
