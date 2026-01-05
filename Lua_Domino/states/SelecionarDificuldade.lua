@@ -1,69 +1,100 @@
 local GameState = require 'lib.GameState'
+local config = require 'config'
+
+local btnDisposicaoTelaX = 0
+local btnSpaceY = 20 * config.scaleY -- Espaçamento entre os botões
 
 local selecionarDificuldade = {}
 
+local function calcular_disposicao_botoes(botoes)
+    local posicaoAtualY = (config.HEIGHT/2) -btnSpaceY - config.btnResponsiveY -- deixando o segundo botao no centro da tela
+    for _,piece in ipairs(botoes) do
+        btnDisposicaoTelaX = (config.WIDTH / 2) - piece.width / 2
+        piece.x = btnDisposicaoTelaX
+        piece.y = posicaoAtualY
+
+
+        posicaoAtualY = posicaoAtualY + piece.height + btnSpaceY
+    end
+end
+
 function selecionarDificuldade:enter()
-    self.fonteBotoes = love.graphics.newFont(32)
+    self.fonteBotoes = love.graphics.newFont(32* config.scaleX)
 
     -- Lista sequencial de botões
     self.botoes = {
         {
             id = "facil",
-            x = 535, y = 310,
-            width = 370, height = 90,
+            x = 0, y = 0,
+            width = config.btnResponsiveX, height = config.btnResponsiveY,
             text = "Fácil",
             isHovering = false
         },
         {
             id = "medio",
-            x = 535, y = 425,
-            width = 370, height = 90,
+            x = 0, y = 0,
+            width = config.btnResponsiveX, height = config.btnResponsiveY,
             text = "Médio",
             isHovering = false
         },
         {
             id = "dificil",
-            x = 535, y = 539,
-            width = 370, height = 90,
+            x = 0, y = 0,
+            width = config.btnResponsiveX, height = config.btnResponsiveY,
             text = "Difícil",
             isHovering = false
         },
         {
             id = "voltar",
-            x = 1010, y = 878,
-            width = 370, height = 90,
+            x = 0, y = 0,
+            width = config.btnResponsiveX*0.8, height = config.btnResponsiveY*0.8,
             text = "Voltar",
             isHovering = false
         }
     }
+    calcular_disposicao_botoes(self.botoes)
 end
 
+
+
 function selecionarDificuldade:draw()
+    
     love.graphics.clear(0.953, 0.953, 0.953, 1)
     love.graphics.setLineWidth(5)
     love.graphics.setColor(0,0,0,1)
-    love.graphics.line(720,0,720,1024)
+    love.graphics.line(config.WIDTH/2,0,config.WIDTH/2,config.HEIGHT)
 
     love.graphics.setLineWidth(3)
     love.graphics.circle("fill", 1081, 512, 50)
     love.graphics.circle("fill", 358, 512, 50)
 
     -- Loop para desenhar todos os botões
-    for _, botao in ipairs(self.botoes) do
-        if botao.isHovering then
+
+    for _,piece in ipairs(self.botoes) do
+        
+
+        if piece.isHovering then
             love.graphics.setColor(0.8, 0.8, 0.8, 1)
         else
-            love.graphics.setColor(1,1,1,1)
+            love.graphics.setColor(1, 1, 1, 1)
         end
 
-        love.graphics.rectangle("fill", botao.x, botao.y, botao.width, botao.height)
+        love.graphics.rectangle("fill", piece.x, piece.y, piece.width, piece.height)
 
         love.graphics.setColor(0,0,0,1)
-        love.graphics.rectangle("line", botao.x, botao.y, botao.width, botao.height)
+        love.graphics.setLineWidth(3)
+
+        love.graphics.rectangle("line", piece.x, piece.y, piece.width, piece.height)
+
+        love.graphics.setLineWidth(1)
 
         love.graphics.setFont(self.fonteBotoes)
-        local posicaoTexto = botao.y + (botao.height / 2) - (self.fonteBotoes:getHeight() / 2)
-        love.graphics.printf(botao.text, botao.x, posicaoTexto, botao.width, "center")
+
+        local posicaoTexto = piece.y + (piece.height / 2) - (self.fonteBotoes:getHeight() / 2)
+
+        love.graphics.printf(piece.text, piece.x, posicaoTexto, piece.width, "center")
+
+
     end
 end
 

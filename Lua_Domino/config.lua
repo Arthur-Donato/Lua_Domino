@@ -1,3 +1,10 @@
+--Informações importates:
+-- Este arquivo define as configurações do jogo, incluindo dimensões da janela e escalas responsivas para elementos da interface do usuário.
+-- Para a sua execução correta, certifique-se de que o módulo 'config' seja carregado antes de usar suas propriedades em outros arquivos.
+-- Ao executar o "local config = require "config"", só será executado uma unica vez, mesmo que seja chamado em vários arquivos diferentes...
+-- Assim, caso deseje recalcular alguma variável, será necessário criar uma função para isso dentro deste arquivo ().
+
+
 local config = {}
 
 -- Pega dimensões atuais da janela
