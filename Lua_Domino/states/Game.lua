@@ -1,12 +1,13 @@
 local GameState = require 'lib.GameState'
 local ListaDuplamenteEncadeada = require 'lib.ListaDuplamenteEncadeada'
 local Peca  = require 'lib.Peca'
-local WIDTH, HEIGHT = love.window.getDesktopDimensions()
+local config = require "config"
 
 local Game = {
     botaoComprar = {
+            id = "botaoComprar",
             x = 1010,
-            y = 878,
+            y = 480,
             width = 200,
             height = 80,
             text = "Comprar",
@@ -17,16 +18,30 @@ local Game = {
     monte = {}
 }
 
-function Game:enter()
-    
-    self.fonteBotoes = love.graphics.newFont(32)
-    self.mesa = ListaDuplamenteEncadeada.new()
+local function calcular_disposicao_pecas(pecas)
+    local posicaoAtualX = 0 
+    local posicaoAtualY = config.HEIGHT - 20 - 160 --20 de margem inferior e 160 altura da peça(alterar para variável posteriormente)
+    if #pecas%2 == 0 then
+        posicaoAtualX = (config.WIDTH/2) - ((#pecas/2) * (100 + 20)) --100 largura da peça e 20 espaçamento entre as peças(alterar para variável posteriormente)
+    else
+        posicaoAtualX = (config.WIDTH/2) - (math.floor(#pecas/2) * (100 + 20)) - (100/2) --100 largura da peça e 20 espaçamento entre as peças(alterar para variável posteriormente)
+    end
+    for _,piece in ipairs(pecas) do
+        piece.x = posicaoAtualX
+        piece.y = posicaoAtualY
 
+
+        posicaoAtualX = posicaoAtualX + piece.width + 20
+    end
+end
+
+local function criar_pecas(monte)
     for i=0,6 do
         for j=i,6 do
             local imagemPeca = love.graphics.newImage("images/"..i.."-"..j..".png")--carrega a imagem da peça
             print("images/"..i.."-"..j..".png")
             local novaPeca = {
+                id = "peça",
                 valor1 = i,
                 valor2 = j,
                 img = imagemPeca,
@@ -35,14 +50,10 @@ function Game:enter()
                 width = 100,
                 height = 160
             }
-            table.insert(self.monte,novaPeca)
+            table.insert(monte,novaPeca)
 
         end
     end
-    DistribuirPecas(self.monte)
-
-    
-    
 end
 
 
@@ -57,7 +68,7 @@ end
 
 function DistribuirPecas(monte)
     Game.monte = Embaralhar(monte)
-    for i=0,7 do
+    for i=1,5 do
         local peca = table.remove(Game.monte)
         table.insert(Game.maoJogador,peca)
 
@@ -65,8 +76,21 @@ function DistribuirPecas(monte)
         table.insert(Game.maoIA,peca)
     end
 
-
 end
+
+function Game:enter()
+    
+    self.fonteBotoes = love.graphics.newFont(32)
+    self.mesa = ListaDuplamenteEncadeada.new()
+
+    criar_pecas(self.monte)
+    DistribuirPecas(self.monte)
+    calcular_disposicao_pecas(self.maoJogador)
+end
+
+
+
+
 --OBS: Obs:
 --deck[i], deck[j] = deck[j], deck[i]
 
@@ -113,12 +137,10 @@ function Game:draw()
     love.graphics.setColor(1,1,1,1)
     --ADICIONANDO AS PECAS DO JOGO
     
-
+    calcular_disposicao_pecas(self.maoJogador)
     for _,piece in ipairs(self.maoJogador) do--NOTE:
-        love.graphics.draw(piece.img,posicaoAtual,850)
-        piece.x = posicaoAtual
-        piece.y = 850 --alterar para variável posteriormente
-        posicaoAtual = posicaoAtual + piece.width + 20
+        love.graphics.draw(piece.img,piece.x,piece.y)
+ 
     end
 
 --NOTE: Explicação do for acima:
