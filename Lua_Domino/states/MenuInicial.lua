@@ -9,7 +9,7 @@ local menuInicial = {}
 
 
 local function calcular_disposicao_botoes(botoes)
-    local posicaoAtualY = (config.HEIGHT/2) -btnSpaceY - config.btnResponsiveY -- deixando o segundo botao no centro da tela
+    local posicaoAtualY = (config.HEIGHT/2) -btnSpaceY - config.btnResponsiveY * 2 -- deixando o segundo botao no centro da tela
     for _,piece in ipairs(botoes) do
         btnDisposicaoTelaX = (config.WIDTH / 2) - piece.width / 2
         piece.x = btnDisposicaoTelaX
@@ -83,7 +83,6 @@ function menuInicial:draw()
     love.graphics.circle("fill", config.WIDTH*0.88, config.HEIGHT*0.68, 50 * config.scaleX)
 
     --CRIANDO O BOTAO DE INICIO DE JOGO
-    local posicaoAtualY = (config.HEIGHT/2) -btnSpaceY - config.btnResponsiveY -- deixando o segundo botao no centro da tela
     for _,piece in ipairs(self.botoes) do
         
         if piece.isHovering then
@@ -109,9 +108,6 @@ function menuInicial:draw()
 
 
     end
-
-
-
     
 end
 
