@@ -1,7 +1,15 @@
 local GameState = require 'lib.GameState'
-local WIDTH, HEIGHT = love.window.getDesktopDimensions()
+local config = require 'config'
 
 local historico = {}
+
+local function calcularPosicaoDoBotao(botao)
+    local posicaoAtualX = config.WIDTH - botao.width * 1.25
+    local posicaoAtualY = config.HEIGHT - botao.height * 2
+
+    botao.x = posicaoAtualX
+    botao.y = posicaoAtualY
+end
 
 function historico:enter()
     self.fonteBotoes = love.graphics.newFont(32)
@@ -15,11 +23,18 @@ function historico:enter()
         isHovering = false
     }
     
+
+    calcularPosicaoDoBotao(self.botaoVoltar)
 end
 
 function historico:draw()
-
+    -- NAO CRIEI LOOP PARA DESENHAR OS BOTOES NA TELA PQ NESSA TELA TEM APENAS UM BOTAO ENT DECIDI TRATAR COMO UMA VARIAVEL E NAO UMA TABELA
     love.graphics.clear(0.953, 0.953, 0.953, 1)
+
+    love.graphics.setLineWidth(5)
+    love.graphics.setColor(0,0,0,1)
+
+    love.graphics.line(config.WIDTH / 2, 0, config.WIDTH / 2, config.HEIGHT)
 
     if self.botaoVoltar.isHovering then
         love.graphics.setColor(0.8, 0.8, 0.8, 1)
@@ -37,7 +52,7 @@ function historico:draw()
     local posicaoTexto = self.botaoVoltar.y + (self.botaoVoltar.height / 2) - (self.fonteBotoes:getHeight() / 2)
 
     love.graphics.printf(self.botaoVoltar.text, self.botaoVoltar.x, posicaoTexto, self.botaoVoltar.width, "center")
-    
+    --CRIAR UM LACO DE REPETICAO PARA ADICIONAR AS PARTIDAS QUE APARECERAO NO HISTORICO
 end
 
 function historico:update()
@@ -63,7 +78,5 @@ function historico:mousepressed(x, y, button, istouch)
         end
     end
 end
-
-
 
 return historico
