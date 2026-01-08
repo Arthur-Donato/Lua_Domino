@@ -7,7 +7,7 @@ local btnSpaceY = 20 * config.scaleY -- Espaçamento entre os botões
 local selecionarDificuldade = {}
 
 local function calcular_disposicao_botoes(botoes)
-    local posicaoAtualY = (config.HEIGHT/2) -btnSpaceY - config.btnResponsiveY -- deixando o segundo botao no centro da tela
+    local posicaoAtualY = (config.HEIGHT/2) -btnSpaceY - config.btnResponsiveY * 2 -- deixando o segundo botao no centro da tela
     for _,piece in ipairs(botoes) do
         btnDisposicaoTelaX = (config.WIDTH / 2) - piece.width / 2
         piece.x = btnDisposicaoTelaX
@@ -26,28 +26,32 @@ function selecionarDificuldade:enter()
         {
             id = "facil",
             x = 0, y = 0,
-            width = config.btnResponsiveX, height = config.btnResponsiveY,
+            width = config.btnResponsiveX, 
+            height = config.btnResponsiveY,
             text = "Fácil",
             isHovering = false
         },
         {
             id = "medio",
             x = 0, y = 0,
-            width = config.btnResponsiveX, height = config.btnResponsiveY,
+            width = config.btnResponsiveX, 
+            height = config.btnResponsiveY,
             text = "Médio",
             isHovering = false
         },
         {
             id = "dificil",
             x = 0, y = 0,
-            width = config.btnResponsiveX, height = config.btnResponsiveY,
+            width = config.btnResponsiveX, 
+            height = config.btnResponsiveY,
             text = "Difícil",
             isHovering = false
         },
         {
             id = "voltar",
             x = 0, y = 0,
-            width = config.btnResponsiveX*0.8, height = config.btnResponsiveY*0.8,
+            width = config.btnResponsiveX*0.8, 
+            height = config.btnResponsiveY*0.8,
             text = "Voltar",
             isHovering = false
         }
@@ -65,8 +69,8 @@ function selecionarDificuldade:draw()
     love.graphics.line(config.WIDTH/2,0,config.WIDTH/2,config.HEIGHT)
 
     love.graphics.setLineWidth(3)
-    love.graphics.circle("fill", 1081, 512, 50)
-    love.graphics.circle("fill", 358, 512, 50)
+    love.graphics.circle("fill", config.WIDTH / 4, config.HEIGHT / 2, 50)
+    love.graphics.circle("fill", config.WIDTH / 1.33 , config.HEIGHT / 2, 50)
 
     -- Loop para desenhar todos os botões
 
